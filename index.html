@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://kit.fontawesome.com/6a7af4c1f8.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h1>
+                <i class="fa-solid fa-wallet"></i> Wallet
+            </h1>
+            <p>Twój osobisty menadżer finansów.</p>
+        </div>
+        <div class="body">
+            <div class="body-left">
+                <h2>lista transakcji</h2>
+                <div class="transactions">
+                    <div class="income">
+                        <h3>Przychód:</h3>
+                        <ul>
+                        </ul>
+                    </div>
+                    <div class="spendings">
+                        <h3>Wydatki:</h3>
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+            <div class="body-right">
+                <h2>dostępne środki:</h2>
+                <p><span class="balance">0</span> zł</p>
+                <div class="btns">
+                    <button class="add-transaction">
+                        <i class="fa-solid fa-plus"></i>Dodaj transakcje
+                    </button>
+                    <button class="delete-all">
+                        <i class="fa-regular fa-trash-can"></i>Usuń wszystkie
+                    </button>
+                </div>
+                <h2>wybierz styl:</h2>
+                <div class="style-btns">
+                    <div class="light-mode"></div>
+                    <div class="dark-mode"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup">
+        <h2>dodaj nową transakcje</h2>
+        <form>
+            <div class="input-box">
+                <label for="name">Nazwa:</label>
+                <p>(podaj nazwę transakcji)</p>
+                <input type="text" id="name">
+            </div>
+            <div class="input-box">
+                <label for="amount">Kwota:</label>
+                <p>(podaj kwote transakcji, jeśli dodajesz wydatek, postaw znak minusa na początku kwoty)</p>
+                <input type="number" id="amount">
+            </div>
+            <div class="input-box">
+                <label for="category">Wybierz kategorię:</label>
+                <p>([ + ] oznacza przychód, [ - ] oznacza wydatek)</p>
+                <select id="category">
+                    <option value="0" selected disabled></option>
+                    <option value="income">[ + ] Przychód</option>
+                    <option value="shopping">[ - ] Zakupy</option>
+                    <option value="food">[ - ] Jedzenie</option>
+                    <option value="cinema">[ - ] Kino</option>
+                </select>
+            </div>
+            <p class="error">Musisz uzupełnić wszystkie pola!</p>
+            <div class="btns-box">
+                <button class="save">
+                    <i class="fa-solid fa-floppy-disk"></i>Zapisz
+                </button>
+                <button class="cancel">
+                    <i class="fa-regular fa-rectangle-xmark"></i>Anuluj
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="./main.js"></script>
+</body>
+
+</html>
