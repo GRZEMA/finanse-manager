@@ -69,21 +69,20 @@ const clearForm = () => {
 }
 
 // transaction logic
-const addNewTransaction = (li, amount) => {
-	const del = false
-	if (amount.slice(0, 1) === '-') {
-		ulSpendings.append(li)
-	} else {
+const addNewTransaction = (li, category, amount) => {
+	if (category === 'income') {
 		ulIncome.append(li)
+	} else {
+		ulSpendings.append(li)
 	}
-	balanceCheck(amount, del)
+
+	balanceCheck(amount, category)
 }
 
-// balance update
-const balanceCheck = (amount, del) => {
-	if (del === false) {
+const balanceCheck = (amount, category) => {
+	if (category === 'income') {
 		balance.textContent = (parseFloat(balance.textContent) + parseFloat(amount)).toFixed(2)
-	} else if (del === true) {
+	} else {
 		balance.textContent = (parseFloat(balance.textContent) - parseFloat(amount)).toFixed(2)
 	}
 }
@@ -122,6 +121,7 @@ const createTransactionDetails = (name, amount, category) => {
 	const amountP = document.createElement('p')
 	amountP.classList.add('amount')
 	amountP.textContent = amount + 'zł'
+	category === 'income' ? (amountP.textContent = amount + 'zł') : (amountP.textContent = `-${amount} zł`)
 
 	// delete btn
 	const deleteBtn = document.createElement('button')
@@ -138,12 +138,11 @@ const createTransactionDetails = (name, amount, category) => {
 	// deletebtn event
 	deleteBtn.addEventListener('click', e => {
 		e.target.closest('li').remove()
-		const del = true
-		balanceCheck(amount, del)
+		balanceCheck(amount, category)
 	})
 
 	// transforming created elements into logic check
-	addNewTransaction(li, amount)
+	addNewTransaction(li, category, amount)
 }
 
 // delete all transactions history
