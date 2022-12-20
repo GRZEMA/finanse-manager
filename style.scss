@@ -105,6 +105,11 @@ body {
 			border-radius: 50%;
 			border: 1px solid var(--second-background-color);
 			cursor: pointer;
+			transition: box-shadow 0.3s;
+
+			&:hover {
+				box-shadow: 0 0 10px var(--second-background-color);
+			}
 		}
 
 		.light-mode {
